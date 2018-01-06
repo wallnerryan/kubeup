@@ -47,11 +47,11 @@ while [ `./bin/kubectl --kubeconfig=matchbox/assets/auth/kubeconfig get nodes 2>
     sleep 10
 done
 
-echo "--> Deploying Portworx"
-( cd apps/porx ; ./deploy.sh )
-if [ $? -ne 0 ] ; then
-	exit 1
-fi
+#echo "--> Deploying Portworx"
+#( cd apps/porx ; ./deploy.sh )
+#if [ $? -ne 0 ] ; then
+#	exit 1
+#fi
 
 echo "--> Kubernetes is now ready"
 echo "--> Try: ./bin/kubectl --kubeconfig=matchbox/assets/auth/kubeconfig get nodes"

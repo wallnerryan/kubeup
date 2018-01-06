@@ -30,7 +30,7 @@ get_bootkube() {
 get_matchbox() {
     if [ ! -d matchbox/.git ] ; then
         echo "--> Get matchbox"
-        git clone https://github.com/coreos/matchbox.git
+        git clone -b csi https://github.com/lpabon/matchbox.git
         chmod 600 matchbox/tests/smoke/fake_rsa
 	cp -r resources/bootkube matchbox/examples/groups
     fi

@@ -1,0 +1,32 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: podpvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: csi-hostpath
+  resources:
+    requests:
+      storage: 1Mi
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server
+spec:
+  nodeName: lpabon-e2e-debian-minion-group-j1vj
+  containers:
+   - name: web-server
+     image: nginx 
+     volumeMounts:
+       - mountPath: /var/lib/www/html
+         name: mypvc
+  volumes:
+   - name: mypvc
+     persistentVolumeClaim:
+       claimName: podpvc
+       readOnly: false
+

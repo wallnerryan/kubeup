@@ -78,7 +78,7 @@ spec:
         app: csi-hostpath-driver
     spec:
       serviceAccount: csi-hostpath
-      nodeName: lpabon-e2e-debian-minion-group-j1vj
+      nodeName: node3.example.com
       containers:
         - name: csi-external-provisioner
           imagePullPolicy: Always

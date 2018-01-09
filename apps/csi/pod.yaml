@@ -17,7 +17,7 @@ kind: Pod
 metadata:
   name: web-server
 spec:
-  nodeName: lpabon-e2e-debian-minion-group-j1vj
+  nodeName: node3.example.com
   containers:
    - name: web-server
      image: nginx 

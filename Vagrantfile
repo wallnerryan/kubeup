@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
     # Make kub master
     config.vm.define :master do |master|
-        master.vm.network :private_network, ip: "192.168.10.90"
+        master.vm.network :private_network, ip: "192.168.20.90"
         master.vm.host_name = "master"
 
         master.vm.provider :libvirt do |lv|
@@ -31,12 +31,12 @@ Vagrant.configure("2") do |config|
     (0..NODES-1).each do |i|
         config.vm.define "node#{i}" do |node|
             node.vm.hostname = "node#{i}"
-            node.vm.network :private_network, ip: "192.168.10.10#{i}"
+            node.vm.network :private_network, ip: "192.168.20.10#{i}"
 
             (0..DISKS-1).each do |d|
                 node.vm.provider :libvirt do  |lv|
                     driverletters = ('b'..'z').to_a
-                    lv.storage :file, :device => "vd#{driverletters[d]}", :path => "atomic-disk-#{i}-#{d}.disk", :size => '1024G'
+                    lv.storage :file, :device => "vd#{driverletters[d]}", :path => "ryan0-atomic-disk-#{i}-#{d}.disk", :size => '1024G'
                     lv.memory = MEMORY
                     lv.cpus = CPUS
                 end

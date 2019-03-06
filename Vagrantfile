@@ -6,6 +6,9 @@ DISKS = 3
 MEMORY = 4096
 CPUS = 2
 
+### TYPE HERE A PREFIX ###
+PREFIX = "luis-k8s"
+
 Vagrant.configure("2") do |config|
     config.ssh.insert_key = false
     config.vm.box = "centos/7"
@@ -49,8 +52,8 @@ Vagrant.configure("2") do |config|
                     ansible.limit = "all"
                     ansible.playbook = "site.yml"
                     ansible.groups = {
-                        "master" => ["master"],
-                        "nodes" => (0..NODES-1).map {|j| "node#{j}"},
+                        "master" => ["#{PREFIX}-master"],
+                        "nodes" => (0..NODES-1).map {|j| "#{PREFIX}-node#{j}"},
                     }
                 end
             end
